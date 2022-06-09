@@ -13,6 +13,7 @@ exports.getLogin = async (req, res) => {
   res.status(status).json(retorno)
 };
 
+
 exports.create = async (req, res) => {
   const { data: retorno, status } = await createUser(req.body);
   res.status(status).json(retorno);
