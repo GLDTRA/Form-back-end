@@ -2,7 +2,7 @@ const {
   createUser,
   getUsers,
   getOneUser,
-  getLogin
+  login
 } = require("../Model/user");
 
 exports.create = async (req, res) => {
@@ -18,7 +18,7 @@ exports.getOne = async (req, res) => {
   res.status(status).json(retorno)
 };
 exports.login = async (req, res) => {
-  const { data: retorno, status } = await getLogin(req.body.email, req.body.password );
+  const { data: retorno, status } = await login(req.body.email, req.body.password );
   res.status(status).json(retorno)
 };
 
