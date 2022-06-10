@@ -4,9 +4,6 @@ const bcrypt = require("bcrypt");
 
 const { ObjectId } = require('mongodb')
 
-exports.paramsId = [
-  param('id').notEmpty().custom((value) => ObjectId.isValid(value))
-]
 exports.validateCreate = [
   body('login').trim().notEmpty().isEmail(), 
   body('password').trim().notEmpty()

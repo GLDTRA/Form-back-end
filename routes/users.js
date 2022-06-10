@@ -1,5 +1,6 @@
-const { getAll, create, getLogin } = require("../controller/user");
-const { validateCreate, validateErrorUser, validateDuplicatedEmail, paramsId} = require("../middleware/users");
+const { getAll, create, getOne } = require("../controller/user");
+const { validateCreate, validateErrorUser, validateDuplicatedEmail} = require("../middleware/users");
+const { getOneUser } = require("../Model/user");
 
 //next : ir para o próximo
 //res : resposta
@@ -8,5 +9,5 @@ const { validateCreate, validateErrorUser, validateDuplicatedEmail, paramsId} = 
 module.exports = (app) => {
   app.get("/user", getAll);
   app.post("/user", validateCreate, validateErrorUser, validateDuplicatedEmail, create);
-  app.get("/user/:id", paramsId, validateErrorUser, validateFoundById, getLogin);
+  app.get("/user/:id", validateErrorUser, getOne);
 };

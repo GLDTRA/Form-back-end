@@ -1,5 +1,5 @@
-const { ObjectId } = require("mongodb");
 const bcrypt = require("bcrypt"); 
+const { ObjectId } = require("mongodb");
 const { connectMongodb } = require("./database/connect");
 
 exports.createUser = async ({login, password }) => {
@@ -14,10 +14,11 @@ exports.getUsers = async () => {
   const data = await collection.find().toArray();
   return { data, status: 200 };
 };
-  
-exports.getLogin = async (login, hashPassword) => {
+exports.getOneUser = async (id) => {
   const collection = await connectMongodb("quizz", "usuarios");
-  const dataLogin = await collection.findOne({ login });
-  return { data:{login, hashPassword} ,status: 200 };
-}
+  const data = await collection.findOne({ _id: ObjectId(id) });
+  return { data, status: 200 };
+};
+
+ 
 
