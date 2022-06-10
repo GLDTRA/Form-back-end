@@ -10,6 +10,11 @@ exports.validateCreate = [
   body('password').trim().notEmpty().isString()
 ];
 
+exports.validateLogin = [
+  body('email').trim().notEmpty().isEmail(), 
+  body('password').trim().notEmpty().isString()
+];
+
 exports.validateErrorUser = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
