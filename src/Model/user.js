@@ -34,10 +34,8 @@ exports.login = async (email, password) => {
     if(compare) {
       return { data:{user, compare}, status: 200 };
     }
-  }else {
-    return { data: { message: "E-mail ou senha inválidos"}, status: 401 };
   }
-
+  return { data: { message: "E-mail ou senha inválidos"}, status: 401 };
 }
 
  
