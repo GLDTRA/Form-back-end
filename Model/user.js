@@ -19,6 +19,11 @@ exports.getOneUser = async (id) => {
   const data = await collection.findOne({ _id: ObjectId(id) });
   return { data, status: 200 };
 };
+exports.getUserbyEmail = async (login) => {
+  const collection = await connectMongodb("quizz", "usuarios");
+  const data = await collection.findOne({ login });
+  return { data, status: 200 };
+}
 
  
 
